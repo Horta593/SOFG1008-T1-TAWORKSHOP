@@ -58,11 +58,11 @@ Feature: Delete task from to do list.
 Feature: Add a task to the to-do list
     @addTask
     Scenario: Adding a task
-        Given the To-Do list empty
+        Given the to-do list is empty
         | TASK                          | DATE       | STATUS        | PRIORITY |
         |                               |            |               |          |
-        When the user adds a task "Buy Book: Animal Farm"
-        Then the to-do list should contain "Buy Book: Animal Farm" with the corresponding date "23/08/2023" and the status "Not Completed" and priority "low"
+        When the user adds a task "Buy Book: Animal Farm, 23/08/2023, Not Completed, low"
+        Then the to-do list should contain "Buy Book: Animal Farm, 23/08/2023, Not Completed, low"
         And the task add is
         | TASK                          | DATE       | STATUS        | PRIORITY |
         | Buy Book: Animal Farm         | 23/08/2023 | Not Completed | Low      |
@@ -71,7 +71,7 @@ Feature: Add a task to the to-do list
 Feature: List all tasks in the to-do list
     @listAllTask
     Scenario: List all task on the to-do list
-        Given the To-Do list
+        Given the to-do list
         | TASK                          | DATE       | STATUS        | PRIORITY |
         | Buy Book: Animal Farm         | 23/07/2023 | Completed     | Low      |
         | Buy groceries                 | 01/08/2023 | Not Completed | Medium   |
