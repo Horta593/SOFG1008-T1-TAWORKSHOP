@@ -30,8 +30,8 @@ class TodoList():
                 break
     
     def get_tasks_by_date_range(self, start_date, end_date):
-        start_date = datetime.strptime(start_date, "%d-%m-%Y").date()
-        end_date = datetime.strptime(end_date, "%d-%m-%Y").date()
+        start_date = datetime.strptime(start_date, "%d-%m-%Y").date().strftime("%d-%m-%Y")
+        end_date = datetime.strptime(end_date, "%d-%m-%Y").date().strftime("%d-%m-%Y")
         for task in self.tasks:
             if task.due_date >= start_date and task.due_date <= end_date:
                 print(task)
