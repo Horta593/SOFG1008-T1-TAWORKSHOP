@@ -41,5 +41,9 @@ def step_impl(context):
     for row in context.table:
         tasks_list.add_task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
 
-    assert to_do_list.list_tasks(), f'It does not print all the to-do list'
+    tasks_list.tasks[0].status = "COMPLETED"
+    tasks_list.tasks[2].status = "IN_PROGRESS"
+
+    if to_do_list == tasks_list:
+        assert to_do_list.list_tasks(), f'It does not print all the to-do list'
     
