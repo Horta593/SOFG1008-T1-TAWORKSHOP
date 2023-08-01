@@ -15,15 +15,25 @@ def step_impl(context):
     for row in context.table:
         to_do_list.add_task(row["DESCRIPTION"],row["PRIORITY"])
 
-# Step 2: When the user list all tasks
-@when('the user list all ')
+    context.to_do_list = to_do_list
+
+# Step 2: When the user wants to see the to-do list
+@when('the user wants to see the to-do list')
 def step_impl(context):
-    # Add the task to the to-do list
     global to_do_list
+    to_do_list = context.to_do_list
 
 # Step 3: Then show all the to-do list 
 @then('show all the to-do list')
 def step_impl(context):
+    global to_do_list
+    to_do_list = context.to_do_list
+    
+# Step 4: And all the to-do list is
+@then('print all the to-do list is')
+def step_impl(context):
     # Print all the to-do list
-    to_do_list.list_tasks()
+    global to_do_list
+    to_do_list = context.to_do_list
+    assert to_do_list.list_tasks(), f'It does not print all the to-do list'
     
