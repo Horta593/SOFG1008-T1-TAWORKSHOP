@@ -6,33 +6,59 @@ def before_scenario(context, scenario):
 	context = {}
 
 # Step 1: Given the to-do list
-@given(f'the to-do list has a task') 
+@given('to-do list') 
 def step_impl(context):
 # Set the to-do list 
     global to_do_list
     to_do_list = TodoList()
 
     for row in context.table:
-        to_do_list.add_task(row["DESCRIPTION"],row["PRIORITY"])
+        tsk = Task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        to_do_list.add_task(tsk)
+
+    to_do_list.mark_task_completed(to_do_list.tasks[0].description)
+    to_do_list.mark_task_in_progress(to_do_list.tasks[2].description) 
 
     context.todolist = to_do_list
 
 # Step 2: When the user search by a none existing priority "ULTRA HIGH"
 @when('the user search by a none existing priority "{task}"') 
 def step_impl(context, task):
-    # Add the task to the to-do list
-    found_todoList = TodoList()
-
-    for t in context.todolist:
-        if t.priority == task:
-            tsk = Task(t.description, t.priority)
-            found_todoList.add_task(tsk)
-
-    context.found_todoList = found_todoList
+    global to_do_list, tsk
+    to_do_list = context.todolist
+    context.tsk = task
+    tsk = context.tsk
 
 # Step 3: Then show no task on the to-do list
 @then('show no task on the to-do list') 
 def step_impl(context):
     # Show no task of the to do list 
-    context.found_todoList
-    assert context.found_todoList == 0, f'Exist a none existing priority!'
+    global to_do_list, tsk
+    to_do_list = context.todolist
+    tsk = context.tsk
+
+# Step 4: And the to-do list is
+@then('the to-do list is') 
+def step_impl(context):
+    global to_do_list, tsk
+    to_do_list = context.todolist
+    tsk = context.tsk
+    tsk_list =TodoList()
+    new_to_list = TodoList()
+
+    for row in context.table:
+        t = Task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        tsk_list.add_task(t)
+
+    tasks = to_do_list.tasks
+
+    for i in range(len(to_do_list)):
+         if tasks[i].priority == tsk:
+            new_to_list.add_task(Task("","",""))
+
+    if len(tsk_list) == 0 and len(new_to_list) == 0:
+        assert True, f'Exist a none existing priority!'
+
+             
+
+    
