@@ -9,7 +9,7 @@ def before_scenario(context, scenario):
 # Step 1: Given the to-do list
 @given('the to-do list')
 def step_impl(context):
-    # Set the to-do list as an empty list
+    # Set the to-do list 
     global to_do_list
     to_do_list = [
         {"task": "Buy Book: Animal Farm",
