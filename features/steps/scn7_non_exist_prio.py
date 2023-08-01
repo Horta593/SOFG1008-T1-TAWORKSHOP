@@ -52,12 +52,12 @@ def step_impl(context):
 
     tasks = to_do_list.tasks
 
-    for i in range(len(to_do_list)):
-         if tasks[i].priority == tsk:
-            new_to_list.add_task(Task("","",""))
+    for i in range(len(to_do_list.tasks)):
+        if tasks[i].priority == tsk:
+            new_to_list.tasks = [["", "", "", ""]]
 
-    if len(tsk_list) == 0 and len(new_to_list) == 0:
-        assert True, f'Exist a none existing priority!'
+    assert tsk_list == new_to_list
+  
 
              
 
