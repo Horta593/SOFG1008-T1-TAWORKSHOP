@@ -26,7 +26,7 @@ def step_impl(context, task):
 # Check if the task is in the to-do list
     global to_do_list
     task_info = task.split(",")
-    tsk = Task(task_info[0],task_info[1])
-    for t in TodoList.tasks:
+    tsk = Task(task_info[0], task_info[1])
+    for t in to_do_list.tasks:
         if t.description == tsk.description:    
             assert True, f'Task is in the to-do list'

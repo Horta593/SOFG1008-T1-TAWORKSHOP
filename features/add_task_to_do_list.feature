@@ -1,6 +1,6 @@
 Feature: Add a task to the to-do list
     @addTask
-    Scenario: Adding a task
+    Scenario: Adding a task to the to-do list
         Given the to-do list is empty
         When the user adds
         | DESCRIPTION                   | DATE       | STATUS        | PRIORITY |

@@ -6,7 +6,7 @@ def before_scenario(context, scenario):
 	context = {}
 
 # Step 1: Given the to-do list
-@given('the to-do list') 
+@given(f'the to-do list has a task') 
 def step_impl(context):
 # Set the to-do list 
     global to_do_list
