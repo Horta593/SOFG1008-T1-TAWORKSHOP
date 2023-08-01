@@ -6,75 +6,12 @@
 # Get todo list tasks by date range
 # Get todo list by priority (high, medium, low)
 # Get todo list by status (completed, not completed)
-
-from datetime import datetime
-from enum import Enum
-
-
-class Priority(Enum):
-    HIGH = 1
-    MEDIUM = 2
-    LOW = 3
-
-
-class Status(Enum):
-    COMPLETED = 1
-    NOT_COMPLETED = 2
-    IN_PROGRESS = 3
-
-
-class Task():
-    def __init__(self, description, priority="LOW"):
-        self.description = description
-        self.date = datetime.now()
-        self.status = Status.NOT_COMPLETED
-        self.priority = Priority[priority]
-
-    def __str__(self):
-        return f"{self.description} priority: {self.priority.name} status: {self.status.name} created: {self.date} "
-
-
-class TodoList():
-    def __init__(self):
-        self.tasks = []
-
-    def add_task(self, task):
-        self.tasks.append(task)
-
-    def list_tasks(self):
-        for task in self.tasks:
-            print(task)
-
-    def mark_task_completed(self, description):
-        for task in self.tasks:
-            if task.description == description:
-                task.status = Status.COMPLETED
-                break
-
-    def get_tasks_by_date_range(self, start_date, end_date):
-        start_date = datetime.strptime(start_date, "%Y-%m-%d")
-        end_date = datetime.strptime(end_date, "%Y-%m-%d")
-        for task in self.tasks:
-            if task.date >= start_date and task.date <= end_date:
-                print(task)
-
-    def get_tasks_by_priority(self, priority):
-        for task in self.tasks:
-            if task.priority.name == priority:
-                print(task)
-
-    def get_tasks_by_status(self, status):
-        for task in self.tasks:
-            if task.status.name == status:
-                print(task)
-
-    def clear_tasks(self):
-        self.tasks = []
-
-
+from src.task.task import Task
+from src.todo.todo import TodoList
 def main():
     print("Welcome to the Todo List App of T1!")
     todo_list = TodoList()
+    
     user_quit = False
 
     while not user_quit:

@@ -1,6 +1,6 @@
 from behave import *
-from src.main import * 
-
+from src.todo.todo import TodoList
+from src.task.task import Task
 #Condiciones antes de empezar cualquier STEP
 def before_scenario(context, scenario):
 	context = {}
