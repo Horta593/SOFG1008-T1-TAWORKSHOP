@@ -14,7 +14,11 @@ def step_impl(context):
     to_do_list  = TodoList()
 
     for row in context.table:
-        to_do_list.add_task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        tsk = Task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        to_do_list.add_task(tsk)
+
+    to_do_list.mark_task_completed(to_do_list.tasks[0].description)
+    to_do_list.mark_task_in_progress(to_do_list.tasks[2].description) 
 
     context.to_do_list = to_do_list
 
@@ -39,11 +43,11 @@ def step_impl(context):
     tasks_list = TodoList()
 
     for row in context.table:
-        tasks_list.add_task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        tsk = Task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        tasks_list.add_task(tsk)
 
-    tasks_list.tasks[0].status = "COMPLETED"
-    tasks_list.tasks[2].status = "IN_PROGRESS"
+    tasks_list.mark_task_completed(tasks_list.tasks[0].description)
+    tasks_list.mark_task_in_progress(tasks_list.tasks[2].description) 
 
-    if to_do_list == tasks_list:
-        assert to_do_list.list_tasks(), f'It does not print all the to-do list'
+    assert to_do_list == tasks_list, f'It does not print all the to-do list'
     

@@ -22,7 +22,7 @@
               "location": "features/steps/scn1_add_task.py:10",
               "arguments": []
             },
-            "result": { "status": "passed", "duration": 0.0007371902465820312 }
+            "result": { "status": "passed", "duration": 0.0006692409515380859 }
           },
           {
             "keyword": "When",
@@ -32,27 +32,30 @@
             "table": {
               "headings": ["DESCRIPTION", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy Book: Animal Farm", "31/07/2023", "NOT_COMPLETED", "LOW"]
+                ["Buy Book: Animal Farm", "31-07-2023", "NOT_COMPLETED", "LOW"]
               ]
             },
             "match": {
               "location": "features/steps/scn1_add_task.py:17",
               "arguments": []
             },
-            "result": { "status": "passed", "duration": 0.0001251697540283203 }
+            "result": { "status": "passed", "duration": 0.0023391246795654297 }
           },
           {
             "keyword": "Then",
             "step_type": "then",
-            "name": "the to-do list should contain \"Buy Book: Animal Farm,LOW\"",
+            "name": "the to-do list should contain \"Buy Book: Animal Farm,31-07-2023,LOW\"",
             "location": "features/add_task_to_do_list.feature:8",
             "match": {
               "location": "features/steps/scn1_add_task.py:25",
               "arguments": [
-                { "value": "Buy Book: Animal Farm,LOW", "name": "task" }
+                {
+                  "value": "Buy Book: Animal Farm,31-07-2023,LOW",
+                  "name": "task"
+                }
               ]
             },
-            "result": { "status": "passed", "duration": 0.00010991096496582031 }
+            "result": { "status": "passed", "duration": 0.00020599365234375 }
           },
           {
             "keyword": "And",
@@ -62,14 +65,14 @@
             "table": {
               "headings": ["DESCRIPTION", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy Book: Animal Farm", "31/07/2023", "NOT_COMPLETED", "LOW"]
+                ["Buy Book: Animal Farm", "31-07-2023", "NOT_COMPLETED", "LOW"]
               ]
             },
             "match": {
               "location": "features/steps/scn1_add_task.py:35",
               "arguments": []
             },
-            "result": { "status": "passed", "duration": 0.00010704994201660156 }
+            "result": { "status": "passed", "duration": 0.00016689300537109375 }
           }
         ],
         "status": "passed"
@@ -99,11 +102,37 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "IN_PROGRESS", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "IN_PROGRESS", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             },
-            "result": { "status": "undefined", "duration": 0 }
+            "match": {
+              "location": "features/steps/scn3_mark_task.py:10",
+              "arguments": []
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0.001360177993774414,
+              "error_message": [
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1595, in __getitem__",
+                "    index = self.headings.index(name)",
+                "ValueError: 'DESCRIPTION' is not in list",
+                "",
+                "During handling of the above exception, another exception occurred:",
+                "",
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
+                "    match.run(runner.context)",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
+                "    self.func(context, *args, **kwargs)",
+                "  File \"features/steps/scn3_mark_task.py\", line 18, in step_impl",
+                "    context.to_do_list.add_task(Task(row['DESCRIPTION'], row['PRIORITY']))",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1600, in __getitem__",
+                "    raise KeyError('\"%s\" is not a row heading' % name)",
+                "KeyError: '\"DESCRIPTION\" is not a row heading'"
+              ]
+            }
           },
           {
             "keyword": "Given",
@@ -125,8 +154,8 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "NOT_COMPLETED", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "NOT_COMPLETED", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             }
           }
@@ -158,11 +187,37 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "IN_PROGRESS", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "IN_PROGRESS", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             },
-            "result": { "status": "undefined", "duration": 0 }
+            "match": {
+              "location": "features/steps/scn3_mark_task.py:10",
+              "arguments": []
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0.0003387928009033203,
+              "error_message": [
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1595, in __getitem__",
+                "    index = self.headings.index(name)",
+                "ValueError: 'DESCRIPTION' is not in list",
+                "",
+                "During handling of the above exception, another exception occurred:",
+                "",
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
+                "    match.run(runner.context)",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
+                "    self.func(context, *args, **kwargs)",
+                "  File \"features/steps/scn3_mark_task.py\", line 18, in step_impl",
+                "    context.to_do_list.add_task(Task(row['DESCRIPTION'], row['PRIORITY']))",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1600, in __getitem__",
+                "    raise KeyError('\"%s\" is not a row heading' % name)",
+                "KeyError: '\"DESCRIPTION\" is not a row heading'"
+              ]
+            }
           },
           {
             "keyword": "When",
@@ -208,11 +263,37 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "IN_PROGRESS", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "IN_PROGRESS", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             },
-            "result": { "status": "undefined", "duration": 0 }
+            "match": {
+              "location": "features/steps/scn3_mark_task.py:10",
+              "arguments": []
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0.00024890899658203125,
+              "error_message": [
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1595, in __getitem__",
+                "    index = self.headings.index(name)",
+                "ValueError: 'DESCRIPTION' is not in list",
+                "",
+                "During handling of the above exception, another exception occurred:",
+                "",
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
+                "    match.run(runner.context)",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
+                "    self.func(context, *args, **kwargs)",
+                "  File \"features/steps/scn3_mark_task.py\", line 18, in step_impl",
+                "    context.to_do_list.add_task(Task(row['DESCRIPTION'], row['PRIORITY']))",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1600, in __getitem__",
+                "    raise KeyError('\"%s\" is not a row heading' % name)",
+                "KeyError: '\"DESCRIPTION\" is not a row heading'"
+              ]
+            }
           },
           {
             "keyword": "When",
@@ -228,7 +309,7 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             }
           }
@@ -260,24 +341,24 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy Book: Animal Farm", "23/07/2023", "COMPLETED", "LOW"],
-                ["Buy groceries", "01/08/2023", "NOT_COMPLETED", "MEDIUM"],
+                ["Buy Book: Animal Farm", "23-07-2023", "COMPLETED", "LOW"],
+                ["Buy groceries", "01-08-2023", "NOT_COMPLETED", "MEDIUM"],
                 [
                   "Software Engineerig homework",
-                  "31/07/2023",
+                  "31-07-2023",
                   "IN_PROGRESS",
                   "HIGH"
                 ],
-                ["Clean the bathroom", "08/08/2023", "NOT_COMPLETED", "HIGH"]
+                ["Clean the bathroom", "08-08-2023", "NOT_COMPLETED", "HIGH"]
               ]
             },
             "match": {
-              "location": "features/steps/scn2_list_task.py:9",
+              "location": "features/steps/scn2_list_task.py:10",
               "arguments": []
             },
             "result": {
               "status": "failed",
-              "duration": 0.0012989044189453125,
+              "duration": 0.0008478164672851562,
               "error_message": [
                 "Traceback (most recent call last):",
                 "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1595, in __getitem__",
@@ -291,8 +372,8 @@
                 "    match.run(runner.context)",
                 "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
                 "    self.func(context, *args, **kwargs)",
-                "  File \"features/steps/scn2_list_task.py\", line 16, in step_impl",
-                "    to_do_list.add_task(row[\"DESCRIPTION\"],row[\"PRIORITY\"])",
+                "  File \"features/steps/scn2_list_task.py\", line 17, in step_impl",
+                "    tsk = Task(row[\"DESCRIPTION\"],row[\"DATE\"],row[\"PRIORITY\"])",
                 "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1600, in __getitem__",
                 "    raise KeyError('\"%s\" is not a row heading' % name)",
                 "KeyError: '\"DESCRIPTION\" is not a row heading'"
@@ -302,7 +383,7 @@
           {
             "keyword": "When",
             "step_type": "when",
-            "name": "the user search by a none existing date \"05/06/2020\"",
+            "name": "the user search by a none existing date \"05-06-2020\"",
             "location": "features/filter_to_do_list_date.feature:10"
           },
           {
@@ -349,41 +430,48 @@
             "table": {
               "headings": ["DESCRIPTION", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy Book: Animal Farm", "23/07/2023", "COMPLETED", "LOW"],
-                ["Buy groceries", "01/08/2023", "NOT_COMPLETED", "MEDIUM"],
+                ["Buy Book: Animal Farm", "23-07-2023", "COMPLETED", "LOW"],
+                ["Buy groceries", "01-08-2023", "NOT_COMPLETED", "MEDIUM"],
                 [
                   "Software Engineerig homework",
-                  "31/07/2023",
+                  "31-07-2023",
                   "IN_PROGRESS",
                   "HIGH"
                 ],
-                ["Clean the bathroom", "08/08/2023", "NOT_COMPLETED", "HIGH"]
+                ["Clean the bathroom", "08-08-2023", "NOT_COMPLETED", "HIGH"]
               ]
             },
             "match": {
-              "location": "features/steps/scn2_list_task.py:9",
+              "location": "features/steps/scn2_list_task.py:10",
               "arguments": []
+            },
+            "result": { "status": "passed", "duration": 0.00025773048400878906 }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user search by a none existing priority \"ULTRA HIGH\"",
+            "location": "features/filter_to_do_list_priority.feature:10",
+            "match": {
+              "location": "features/steps/scn7_non_exist_prio.py:21",
+              "arguments": [{ "value": "ULTRA HIGH", "name": "task" }]
             },
             "result": {
               "status": "failed",
-              "duration": 0.00018405914306640625,
+              "duration": 0.0007739067077636719,
               "error_message": [
                 "Traceback (most recent call last):",
                 "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
                 "    match.run(runner.context)",
                 "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
                 "    self.func(context, *args, **kwargs)",
-                "  File \"features/steps/scn2_list_task.py\", line 16, in step_impl",
-                "    to_do_list.add_task(row[\"DESCRIPTION\"],row[\"PRIORITY\"])",
-                "TypeError: add_task() takes 2 positional arguments but 3 were given"
+                "  File \"features/steps/scn7_non_exist_prio.py\", line 26, in step_impl",
+                "    for t in context.todolist:",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/runner.py\", line 321, in __getattr__",
+                "    raise AttributeError(msg)",
+                "AttributeError: 'Context' object has no attribute 'todolist'"
               ]
             }
-          },
-          {
-            "keyword": "When",
-            "step_type": "when",
-            "name": "the user search by a none existing priority \"ULTRA HIGH\"",
-            "location": "features/filter_to_do_list_priority.feature:10"
           },
           {
             "keyword": "Then",
@@ -429,11 +517,37 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "IN_PROGRESS", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "IN_PROGRESS", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             },
-            "result": { "status": "undefined", "duration": 0 }
+            "match": {
+              "location": "features/steps/scn3_mark_task.py:10",
+              "arguments": []
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0.00029206275939941406,
+              "error_message": [
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1595, in __getitem__",
+                "    index = self.headings.index(name)",
+                "ValueError: 'DESCRIPTION' is not in list",
+                "",
+                "During handling of the above exception, another exception occurred:",
+                "",
+                "Traceback (most recent call last):",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
+                "    match.run(runner.context)",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
+                "    self.func(context, *args, **kwargs)",
+                "  File \"features/steps/scn3_mark_task.py\", line 18, in step_impl",
+                "    context.to_do_list.add_task(Task(row['DESCRIPTION'], row['PRIORITY']))",
+                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1600, in __getitem__",
+                "    raise KeyError('\"%s\" is not a row heading' % name)",
+                "KeyError: '\"DESCRIPTION\" is not a row heading'"
+              ]
+            }
           },
           {
             "keyword": "Given",
@@ -455,8 +569,8 @@
             "table": {
               "headings": ["TASK", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Clean the car", "31/07/2023", "COMPLETED", "MEDIUM"],
-                ["Buy the bottle water", "30/07/2023", "IN_PROGRESS", "LOW"]
+                ["Clean the car", "31-07-2023", "COMPLETED", "MEDIUM"],
+                ["Buy the bottle water", "30-07-2023", "IN_PROGRESS", "LOW"]
               ]
             }
           }
@@ -488,48 +602,55 @@
             "table": {
               "headings": ["DESCRIPTION", "DATE", "STATUS", "PRIORITY"],
               "rows": [
-                ["Buy Book: Animal Farm", "23/07/2023", "COMPLETED", "LOW"],
-                ["Buy groceries", "01/08/2023", "NOT_COMPLETED", "MEDIUM"],
-                ["SE homework", "31/07/2023", "IN_PROGRESS", "HIGH"],
-                ["Clean the bathroom", "08/08/2023", "NOT_COMPLETED", "HIGH"]
+                ["Buy Book: Animal Farm", "23-07-2023", "COMPLETED", "LOW"],
+                ["Buy groceries", "01-08-2023", "NOT_COMPLETED", "MEDIUM"],
+                ["SE homework", "31-07-2023", "IN_PROGRESS", "HIGH"],
+                ["Clean the bathroom", "08-08-2023", "NOT_COMPLETED", "HIGH"]
               ]
             },
             "match": {
-              "location": "features/steps/scn2_list_task.py:9",
+              "location": "features/steps/scn2_list_task.py:10",
               "arguments": []
             },
-            "result": {
-              "status": "failed",
-              "duration": 0.0001990795135498047,
-              "error_message": [
-                "Traceback (most recent call last):",
-                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/model.py\", line 1329, in run",
-                "    match.run(runner.context)",
-                "  File \"/Users/andrea/Documents/Espol/1T-2023/IngenieriaDeSoftware2/Talleres/talleres_env/lib/python3.9/site-packages/behave/matchers.py\", line 98, in run",
-                "    self.func(context, *args, **kwargs)",
-                "  File \"features/steps/scn2_list_task.py\", line 16, in step_impl",
-                "    to_do_list.add_task(row[\"DESCRIPTION\"],row[\"PRIORITY\"])",
-                "TypeError: add_task() takes 2 positional arguments but 3 were given"
-              ]
-            }
+            "result": { "status": "passed", "duration": 0.0002498626708984375 }
           },
           {
             "keyword": "When",
             "step_type": "when",
             "name": "the user wants to see the to-do list",
-            "location": "features/show_all_task_to_do_list.feature:10"
+            "location": "features/show_all_task_to_do_list.feature:10",
+            "match": {
+              "location": "features/steps/scn2_list_task.py:26",
+              "arguments": []
+            },
+            "result": { "status": "passed", "duration": 9.703636169433594e-5 }
           },
           {
             "keyword": "Then",
             "step_type": "then",
             "name": "show all the to-do list",
-            "location": "features/show_all_task_to_do_list.feature:11"
+            "location": "features/show_all_task_to_do_list.feature:11",
+            "match": {
+              "location": "features/steps/scn2_list_task.py:32",
+              "arguments": []
+            },
+            "result": { "status": "passed", "duration": 9.393692016601562e-5 }
           },
           {
             "keyword": "And",
             "step_type": "then",
-            "name": "print all the to-do list is",
-            "location": "features/show_all_task_to_do_list.feature:12"
+            "name": "print all the to-do list",
+            "location": "features/show_all_task_to_do_list.feature:12",
+            "table": {
+              "headings": ["DESCRIPTION", "DATE", "STATUS", "PRIORITY"],
+              "rows": [
+                ["Buy Book: Animal Farm", "23-07-2023", "COMPLETED", "LOW"],
+                ["Buy groceries", "01-08-2023", "NOT_COMPLETED", "MEDIUM"],
+                ["SE homework", "31-07-2023", "IN_PROGRESS", "HIGH"],
+                ["Clean the bathroom", "08-08-2023", "NOT_COMPLETED", "HIGH"]
+              ]
+            },
+            "result": { "status": "undefined", "duration": 0 }
           }
         ],
         "status": "failed"

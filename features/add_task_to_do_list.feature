@@ -5,7 +5,7 @@ Feature: Add a task to the to-do list
         When the user adds
         | DESCRIPTION                   | DATE       | STATUS        | PRIORITY |
         | Buy Book: Animal Farm         | 31-07-2023 | NOT_COMPLETED | LOW      | 
-        Then the to-do list should contain "Buy Book: Animal Farm,LOW"
+        Then the to-do list should contain "Buy Book: Animal Farm,31-07-2023,LOW"
         And the task added is
         | DESCRIPTION                   | DATE       | STATUS        | PRIORITY |
         | Buy Book: Animal Farm         | 31-07-2023 | NOT_COMPLETED | LOW      |
