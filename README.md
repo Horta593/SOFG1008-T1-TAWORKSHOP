@@ -22,13 +22,13 @@ mkvirtualenv testing-env -p python3
 
 2. Make sure to activate the environment
 
-Install the dependencies
+3. Install the dependencies
 
 ```bash
 pip3 install -e .
 ```
 
-Run the project
+4. Run the project
 
 ```bash
 python3 main.py
