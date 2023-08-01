@@ -30,21 +30,30 @@ class TodoList():
                 break
     
     def get_tasks_by_date_range(self, start_date, end_date):
+        by_date_range = []
         start_date = datetime.strptime(start_date, "%d-%m-%Y").date().strftime("%d-%m-%Y")
         end_date = datetime.strptime(end_date, "%d-%m-%Y").date().strftime("%d-%m-%Y")
         for task in self.tasks:
             if task.due_date >= start_date and task.due_date <= end_date:
                 print(task)
+                by_date_range.append(task)
+        return by_date_range
 
     def get_tasks_by_priority(self, priority):
+        by_priority = []
         for task in self.tasks:
             if task.priority.name == priority:
                 print(task)
+                by_priority.append(task)
+        return by_priority
 
     def get_tasks_by_status(self, status):
+        by_status = []
         for task in self.tasks:
             if task.status.name == status:
                 print(task)
+                by_status.append(task)
+        return by_status
 
     def clear_tasks(self):
         self.tasks = []
