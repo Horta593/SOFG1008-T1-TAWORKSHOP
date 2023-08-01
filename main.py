@@ -23,7 +23,7 @@ def main():
         print("4. Clear the entire to-do list")
         print("5. Get to-dos by priority")
         print("6. Get to-dos by status")
-        print("7. Get to-dos by creation date")
+        print("7. Get to-dos by due date")
         print("8. Quit")
 
         user_input = input("Enter your choice: ")
@@ -31,7 +31,8 @@ def main():
         if user_input == "1":
             description = input("Enter the task description: ")
             priority = input("Enter the priority (HIGH, LOW, MEDIUM): ")
-            created_task = Task(description, priority)
+            date = input("Enter the due date (DD-MM-YYYY): ")
+            created_task = Task(description, date, priority)
             todo_list.add_task(created_task)
         elif user_input == "2":
             todo_list.list_tasks()
@@ -47,8 +48,8 @@ def main():
             status = input("Enter the status (COMPLETED, NOT_COMPLETED, IN_PROGRESS): ")
             todo_list.get_tasks_by_status(status)
         elif user_input == "7":
-            start_date = input("Enter the start date (YYYY-MM-DD): ")
-            end_date = input("Enter the end date (YYYY-MM-DD): ")
+            start_date = input("Enter the start date (DD-MM-YYYY): ")
+            end_date = input("Enter the end date (DD-MM-YYYY): ")
             todo_list.get_tasks_by_date_range(start_date, end_date)
         elif user_input == "8":
             user_quit = True

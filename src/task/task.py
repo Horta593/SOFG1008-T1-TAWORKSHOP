@@ -2,11 +2,11 @@ from datetime import datetime
 from src.utils.enums import Status, Priority
 
 class Task():
-    def __init__(self, description, priority="LOW"):
+    def __init__(self, description, due_date ,priority="LOW"):
         self.description = description
-        self.date = datetime.now()
+        self.due_date = datetime.strptime(due_date, "%d-%m-%Y").date()
         self.status = Status.NOT_COMPLETED
         self.priority = Priority[priority]
 
     def __str__(self):
-        return f"{self.description} priority: {self.priority.name} status: {self.status.name} created: {self.date} "
+        return f"Task:\nDescription:{self.description} Priority: {self.priority.name} Status: {self.status.name} Due to: {self.due_date} "

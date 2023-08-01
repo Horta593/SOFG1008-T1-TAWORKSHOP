@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from src.utils.enums import Status
 
@@ -31,10 +30,10 @@ class TodoList():
                 break
     
     def get_tasks_by_date_range(self, start_date, end_date):
-        start_date = datetime.strptime(start_date, "%Y-%m-%d")
-        end_date = datetime.strptime(end_date, "%Y-%m-%d")
+        start_date = datetime.strptime(start_date, "%d-%m-%Y").date()
+        end_date = datetime.strptime(end_date, "%d-%m-%Y").date()
         for task in self.tasks:
-            if task.date >= start_date and task.date <= end_date:
+            if task.due_date >= start_date and task.due_date <= end_date:
                 print(task)
 
     def get_tasks_by_priority(self, priority):
