@@ -35,7 +35,7 @@ def step_impl(context):
     to_do_list = context.to_do_list
     
 # Step 4: And all the to-do list is
-@then('print all the to-do list is')
+@then('print all the to-do list')
 def step_impl(context):
     # Print all the to-do list
     global to_do_list
@@ -49,5 +49,4 @@ def step_impl(context):
     tasks_list.mark_task_completed(tasks_list.tasks[0].description)
     tasks_list.mark_task_in_progress(tasks_list.tasks[2].description) 
 
-    assert to_do_list == tasks_list, f'It does not print all the to-do list'
-    
+    assert to_do_list.tasks == tasks_list.tasks
