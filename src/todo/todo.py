@@ -17,18 +17,19 @@ class TodoList():
             if task.description == description:
                 task.status = Status.COMPLETED
                 break
-    
+
     def mark_task_in_progress(self, description):
         for task in self.tasks:
             if task.description == description:
                 task.status = Status.IN_PROGRESS
                 break
+
     def mark_task_incomplete(self, description):
         for task in self.tasks:
             if task.description == description:
                 task.status = Status.NOT_COMPLETED
                 break
-    
+
     def get_tasks_by_date_range(self, start_date, end_date):
         by_date_range = []
         start_date = datetime.strptime(start_date, "%d-%m-%Y").date().strftime("%d-%m-%Y")
@@ -55,8 +56,21 @@ class TodoList():
                 by_status.append(task)
         return by_status
 
+    def get_tasks_by_description(self, description):
+        for task in self.tasks:
+            if task.status.description == description:
+                return task
+        return None
+
+    def delete_task(self, description):
+        for i,task in enumerate(self.tasks):
+            if task.status.description == description:
+                del self.tasks[i]
+                return True
+        return False
+
     def clear_tasks(self):
         self.tasks = []
 
-    
+
 
