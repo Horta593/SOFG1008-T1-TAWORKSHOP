@@ -7,7 +7,7 @@ def before_scenario(context, scenario):
     context = {}
 
 # Step 1: Given the to-do list
-@given('a set of task from to-do list')
+@given('set of to-do list')
 def step_impl(context):
     global to_do_list
     to_do_list  = TodoList()
@@ -18,27 +18,28 @@ def step_impl(context):
 
     context.to_do_list = to_do_list
 
-@given('the user click on status of "{description}" task')
-def step_given_user_clicks_on_status_of_task(context, description):
-    context.task_description = description
-
-@when('the user select "{status}" Status')
-def step_impl(context,status):
+@given('the user click on status of task')
+def step_given_user_clicks_on_status_of_task(context):
     global to_do_list
+    to_do_list = context.to_do_list
 
-    if status == 'COMPLETED':
-        context.to_do_list.mark_task_completed(context.task_description)
-    if status == 'IN_PROGRESS':
-        context.to_do_list.mark_task_in_progress(context.task_description)
-    if status == 'NOT_COMPLETED':
-        context.to_do_list.mark_task_incomplete(context.task_description)
-
-@then('the status of "{description}" task changes to "{status}" and updates it')
-def step_impl(context,description, status):
+@when('the user select "{task}" Status')
+def step_impl(context,task):
     global to_do_list
-    tasks = context.to_do_list.tasks
-    for task in tasks:
-        if task['TASK'] == description:
-            assert task['STATUS'] == status, f'Status of task {description} did not change correctly'
-            return
-    assert False, f'Task {description} not found in the todo list'
+    to_do_list = context.to_do_list
+    list_tsk = task.split(",")
+    context.description = list_tsk[0]
+    context.status = list_tsk[1]
+
+
+@then('the status of task change to "{status}" and updated it.')
+def step_impl(context, status):
+    global to_do_list
+    to_do_list = context.to_do_list
+    tasks = to_do_list.tasks
+    
+    for t in tasks:
+        if t.description == context.description:
+            if context.status == 'NOT_COMPLETED':
+                to_do_list.mark_task_completed(context.task_description)
+                assert t.status == status, f'Status of task {context.description} did not change correctly'
