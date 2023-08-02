@@ -58,13 +58,13 @@ class TodoList():
 
     def get_tasks_by_description(self, description):
         for task in self.tasks:
-            if task.status.description == description:
+            if task.description == description:
                 return task
         return None
 
     def delete_task(self, description):
         for i,task in enumerate(self.tasks):
-            if task.status.description == description:
+            if task.description == description:
                 del self.tasks[i]
                 return True
         return False
