@@ -7,7 +7,7 @@ def before_scenario(context, scenario):
     context = {}
 
 # Step 1: Given the to-do list
-@given('a set task of to-do list')
+@given('a set of tasks on the to-do list')
 def step_impl(context):
     global to_do_list
     to_do_list  = TodoList()
@@ -18,28 +18,19 @@ def step_impl(context):
 
     context.to_do_list = to_do_list
 
-@given('the user click on status of task required')
-def step_given_user_clicks_on_status_of_task(context):
+@when('the user select "{description}" description')
+def step_impl(context,description):
     global to_do_list
     to_do_list = context.to_do_list
+    context.description = description
 
-@when('the user select "{task}" status of task')
-def step_impl(context,task):
-    global to_do_list
-    to_do_list = context.to_do_list
-    list_tsk = task.split(",")
-    context.description = list_tsk[0]
-    context.status = list_tsk[1]
-
-
-@then('the status of task should be change to "{status}" and updated it.')
-def step_impl(context, status):
+@then('change to name of the description to "{new_description}" and updated it.')
+def step_impl(context, new_description):
     global to_do_list
     to_do_list = context.to_do_list
     tasks = to_do_list.tasks
 
     for t in tasks:
         if t.description == context.description:
-            if context.status == 'NOT_COMPLETED':
-                to_do_list.mark_task_completed(context.description)
-                assert t.status == status, f'Status of task {context.description} did not change correctly'
+            t.description = new_description
+            assert t.description == new_description, f'Description not updated it!'
