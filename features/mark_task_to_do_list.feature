@@ -1,8 +1,8 @@
 #language: en
 
 Feature: Change the description of a task.
-    @taskCompleted
-    Scenario: Change status of task as completed.
+    @changeDesp
+    Scenario: Change the description of a task.
         Given a set of tasks on the to-do list
         | DESCRIPTION          | DATE       | STATUS        | PRIORITY|
         | Clean the car        | 31-07-2023 | NOT_COMPLETED | MEDIUM  |

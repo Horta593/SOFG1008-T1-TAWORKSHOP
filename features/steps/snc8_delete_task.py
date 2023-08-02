@@ -28,7 +28,7 @@ def step_impl(context,description):
     assert deleted == True, f'Task {description} doesnt exists.'
 
 
-@then('the task "{description}" should not be appear on todo list.')
+@then('the task "{description}" should not appear on the todo list.')
 def step_impl(context, description):
     global to_do_list
     to_do_list = context.to_do_list
