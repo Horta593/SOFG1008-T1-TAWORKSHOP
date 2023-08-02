@@ -1,5 +1,5 @@
 from datetime import datetime
-from src.utils.enums import Status
+from utils.enums import Status
 
 class TodoList():
     def __init__(self):

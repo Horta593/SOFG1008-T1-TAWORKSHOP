@@ -37,9 +37,9 @@ def step_impl(context, status):
     global to_do_list
     to_do_list = context.to_do_list
     tasks = to_do_list.tasks
-    
+
     for t in tasks:
         if t.description == context.description:
             if context.status == 'NOT_COMPLETED':
-                to_do_list.mark_task_completed(context.task_description)
+                to_do_list.mark_task_in_progress(context.description)
                 assert t.status == status, f'Status of task {context.description} did not change correctly'

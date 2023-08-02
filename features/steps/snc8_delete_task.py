@@ -1,18 +1,34 @@
-# from behave import *
-# from src.todo.todo import TodoList
-# from src.task.task import Task
+from behave import *
+from src.todo.todo import TodoList
+from src.task.task import Task
 
-# @given('a set of todo list')
-# def step_given_a_set_of_todo_list(context):
-#     context.todo_list = TodoList()
-#     for row in context.table:
-#         task = dict(row.items())
-#         context.todo_list.add_task(task)
+# Condiciones antes de empezar cualquier STEP
+def before_scenario(context, scenario):
+    context = {}
 
-# @when('the user click on "Delete" icon on "{task_description}" task')
-# def step_when_user_clicks_on_delete_for_task(context, task_description):
-#     context.todo_list.delete_task(task_description)
+@given('a set list of to-do')
+def step_impl(context):
+    global to_do_list
+    to_do_list  = TodoList()
 
-# @then('the task "{task_description}" should not be appear on todo list')
-# def step_then_task_should_not_be_in_todo_list(context, task_description):
-#     assert context.todo_list.delete_task(task_description)==False, f'Task {task_description} is still in the todo list'
+    for row in context.table:
+        tsk = Task(row["DESCRIPTION"],row["DATE"],row["PRIORITY"])
+        to_do_list.add_task(tsk)
+
+    context.to_do_list = to_do_list
+    assert len(to_do_list.tasks) > 0, f'Not task added in to-do list.'
+
+
+@when('the user click on "Delete All" icon')
+def step_impl(context):
+    global to_do_list
+    to_do_list = context.to_do_list
+
+
+@then('the todo list should be empty.')
+def step_impl(context):
+    global to_do_list
+    to_do_list = context.to_do_list
+
+    to_do_list.clear_tasks()
+    assert len(to_do_list.tasks) == 0, f'List is not empty.'
